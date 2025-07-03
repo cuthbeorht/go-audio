@@ -19,7 +19,7 @@ func Id3Size(data []byte) int {
 
 	byteSizes := []int{0, 0, 128}
 	size := 0
-	for index, value := range data[8:12] {
+	for index, value := range data[6:10] {
 		size = size << 8
 		if index < 3 {
 			size += int(value) * byteSizes[index]
@@ -28,7 +28,7 @@ func Id3Size(data []byte) int {
 		}
 	}
 
-	return size - 10
+	return size
 }
 
 func Version(data []byte) (string, error) {
