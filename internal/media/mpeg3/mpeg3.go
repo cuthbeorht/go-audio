@@ -1,4 +1,4 @@
-package media
+package mpeg3
 
 import (
 	"errors"
