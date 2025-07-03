@@ -5,6 +5,8 @@ import (
 	"fmt"
 )
 
+const maxSize = 268435455
+
 func IsId3Present(data []byte) bool {
 
 	id3 := string(data[0:3])
@@ -15,12 +17,18 @@ func IsId3Present(data []byte) bool {
 
 func Id3Size(data []byte) int {
 
-	var size int
-	for _, value := range data[8:11] {
-		size += int(value)
+	byteSizes := []int{0, 0, 128}
+	size := 0
+	for index, value := range data[8:12] {
+		size = size << 8
+		if index < 3 {
+			size += int(value) * byteSizes[index]
+		} else {
+			size += int(value)
+		}
 	}
 
-	return size
+	return size - 10
 }
 
 func Version(data []byte) (string, error) {
