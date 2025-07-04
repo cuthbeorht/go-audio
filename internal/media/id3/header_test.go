@@ -26,15 +26,23 @@ func getActualID3TagLength(path string) int {
 }
 
 func Test(t *testing.T) {
-	testFileData, err := os.ReadFile("../../../sample.mp3")
-	if err != nil {
-		fmt.Println(os.Getwd())
-		log.Fatalf("Unale to open sample mp3 file: %s", err)
-	}
+	
 	expectedSize := getActualID3TagLength("fake")
-	actualSize := Id3Size(testFileData)
+	actualSize := Id3Size(GetSample())
 
 	if expectedSize != actualSize {
 		t.Errorf("Expected %d; Got %d", expectedSize, &actualSize)
 	}
+}
+
+func GetSample() ([]byte) {
+	testFileData, err := os.ReadFile("../../../sample.mp3")
+	if err != nil {
+		fmt.Println(os.Getwd())
+		msg := fmt.Sprintf("Unale to open sample mp3 file: %s", err)
+		log.Fatal(msg)
+		panic(msg)
+	}
+
+	return testFileData
 }
