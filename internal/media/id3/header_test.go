@@ -28,7 +28,7 @@ func getActualID3TagLength(path string) int {
 func TestGivenValidID3TagID3SizeExpectValidSize(t *testing.T) {
 
 	expectedSize := getActualID3TagLength("fake")
-	actualSize := Id3Size(GetSample())
+	actualSize := Size(GetSample())
 
 	if expectedSize != actualSize {
 		t.Errorf("Expected %d; Got %d", expectedSize, &actualSize)

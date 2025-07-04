@@ -7,7 +7,7 @@ import (
 
 const maxSize = 268435455
 
-func IsId3Present(data []byte) bool {
+func IsTagPresent(data []byte) bool {
 
 	id3 := string(data[0:3])
 
@@ -15,7 +15,7 @@ func IsId3Present(data []byte) bool {
 	return id3 == "ID3"
 }
 
-func Id3Size(data []byte) int {
+func Size(data []byte) int {
 
 	byteSizes := []int{0, 0, 128}
 	size := 0
