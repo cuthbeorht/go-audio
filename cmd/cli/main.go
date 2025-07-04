@@ -16,10 +16,10 @@ func main() {
 	mediaData, err := files.LoadFile(mediaFile)
 	errorHandling.Check(err, "Unable to load file")
 
-	isId3Present := id3.IsId3Present(mediaData)
+	isId3Present := id3.IsTagPresent(mediaData)
 
 	if isId3Present {
-		id3Size := id3.Id3Size(mediaData)
+		id3Size := id3.Size(mediaData)
 		fmt.Printf("\n\nID3 tag size: %d\n", id3Size)
 
 		id3Version, err := id3.Version(mediaData)
