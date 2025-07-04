@@ -25,8 +25,8 @@ func getActualID3TagLength(path string) int {
 	return 121
 }
 
-func Test(t *testing.T) {
-	
+func TestGivenValidID3TagID3SizeExpectValidSize(t *testing.T) {
+
 	expectedSize := getActualID3TagLength("fake")
 	actualSize := Id3Size(GetSample())
 
@@ -35,7 +35,18 @@ func Test(t *testing.T) {
 	}
 }
 
-func GetSample() ([]byte) {
+func TestGivenValidMP3VersionExpect2_4(t *testing.T) {
+	sampleMediaFile := GetSample()
+
+	expectedVersion := "2.4"
+	actualVersion, _ := Version(sampleMediaFile)
+
+	if expectedVersion != actualVersion {
+		t.Errorf("Expected '%s'. Got '%s'", expectedVersion, actualVersion)
+	}
+}
+
+func GetSample() []byte {
 	testFileData, err := os.ReadFile("../../../sample.mp3")
 	if err != nil {
 		fmt.Println(os.Getwd())

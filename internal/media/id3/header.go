@@ -36,8 +36,9 @@ func Version(data []byte) (string, error) {
 
 	switch major {
 	case 3:
-	case 4:
 		return "2.3", nil
+	case 4:
+		return "2.4", nil
 
 	}
 

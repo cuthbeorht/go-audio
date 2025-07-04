@@ -8,6 +8,6 @@ func TestGivenValidMP3TitleExpectTitle(t *testing.T) {
 	actualTitle, _ := Title(GetSample())
 
 	if expectedtitle != actualTitle {
-		t.Errorf("Expected %s. Got %s", expectedtitle, actualTitle)
+		t.Errorf("Expected '%s'. Got '%s'", expectedtitle, actualTitle)
 	}
 }
