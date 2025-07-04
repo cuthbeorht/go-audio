@@ -1,4 +1,4 @@
-package mpeg3
+package id3
 
 import (
 	"errors"
