@@ -1,4 +1,6 @@
-# Go Audio
+# ID3 Tag Editor
+
+I will find a better title later
 
 ## Testing
 

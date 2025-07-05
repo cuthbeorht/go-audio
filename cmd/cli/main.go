@@ -6,7 +6,7 @@ import (
 	"github.com/cuthbeorht/go-audio/internal/command"
 	"github.com/cuthbeorht/go-audio/internal/errorHandling"
 	"github.com/cuthbeorht/go-audio/internal/media/files"
-	"github.com/cuthbeorht/go-audio/internal/media/mpeg3"
+	"github.com/cuthbeorht/go-audio/internal/media/id3"
 )
 
 func main() {
@@ -16,17 +16,17 @@ func main() {
 	mediaData, err := files.LoadFile(mediaFile)
 	errorHandling.Check(err, "Unable to load file")
 
-	isId3Present := mpeg3.IsId3Present(mediaData)
+	isId3Present := id3.IsTagPresent(mediaData)
 
 	if isId3Present {
-		id3Size := mpeg3.Id3Size(mediaData)
+		id3Size := id3.Size(mediaData)
 		fmt.Printf("\n\nID3 tag size: %d\n", id3Size)
 
-		id3Version, err := mpeg3.Version(mediaData)
+		id3Version, err := id3.Version(mediaData)
 		errorHandling.Check(err, "Invalid verion")
 		fmt.Printf("\nVersion: %s", id3Version)
 
-		tagData := mpeg3.Id3Tag(mediaData, id3Size)
+		tagData := id3.Id3Tag(mediaData, id3Size)
 		fmt.Printf("\nTag data: %s", tagData)
 	}
 }
