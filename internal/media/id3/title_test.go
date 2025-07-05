@@ -3,7 +3,7 @@ package id3
 import "testing"
 
 func TestGivenValidMP3TitleExpectTitle(t *testing.T) {
-	expectedtitle := "fake"
+	expectedtitle := "Quiet Saturday 024 (00:41)"
 
 	actualTitle, _ := Title(GetSample())
 

@@ -23,3 +23,25 @@ func TestGivernValidSampleNewFrameExpectTIT2Size(t *testing.T) {
 		t.Errorf("Expected '%s'. Got '%s'", expectedFrame.Id, actualFrame.Id)
 	}
 }
+
+func TestGivernValidSampleNewFrameExpectValidFlags(t *testing.T) {
+	sampleMp3 := GetSample()
+
+	expectedFrame := Frame{Flags: FrameFlags{IsLatin1: false}}
+	actualFrame := NewFrame(sampleMp3)
+
+	if expectedFrame.Flags.IsLatin1 != actualFrame.Flags.IsLatin1 {
+		t.Errorf("Expected '%s'. Got '%s'", expectedFrame.Id, actualFrame.Id)
+	}
+}
+
+func TestGivernValidSampleNewFrameExpectValidData(t *testing.T) {
+	sampleMp3 := GetSample()
+
+	expectedFrame := Frame{Data: "Quiet Saturday 024 (00:41)"}
+	actualFrame := NewFrame(sampleMp3)
+
+	if expectedFrame.Data != actualFrame.Data {
+		t.Errorf("Expected '%s'. Got '%s'", expectedFrame.Id, actualFrame.Id)
+	}
+}
