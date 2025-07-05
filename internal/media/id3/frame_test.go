@@ -38,10 +38,10 @@ func TestGivernValidSampleNewFrameExpectValidFlags(t *testing.T) {
 func TestGivernValidSampleNewFrameExpectValidData(t *testing.T) {
 	sampleMp3 := GetSample()
 
-	expectedFrame := Frame{Data: "Quiet Saturday 024 (00:41)"}
+	expectedFrame := Frame{Data: "Quiet Saturday 001 (00:17)"}
 	actualFrame := NewFrame(sampleMp3)
 
 	if expectedFrame.Data != actualFrame.Data {
-		t.Errorf("Expected '%s'. Got '%s'", expectedFrame.Id, actualFrame.Id)
+		t.Errorf("Expected '%s'. Got '%s'", expectedFrame.Data, actualFrame.Data)
 	}
 }
