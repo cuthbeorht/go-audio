@@ -22,3 +22,4 @@ setup:
 clean:
 	echo "Cleaning up after myself"
 	rm -rf ./tmp
+	rm -f sample.mp3
