@@ -1,6 +1,14 @@
 package id3
 
-func Title(data []byte) (string, error) {
+import "errors"
 
-	return "Quiet Saturday", nil
+func Title(frames []Frame) (string, error) {
+
+	for _, frame := range frames {
+		if frame.Id == "TIT2" {
+			return frame.Data, nil
+		}
+	}
+
+	return "", errors.New("no title found")
 }
