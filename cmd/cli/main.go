@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"github.com/cuthbeorht/go-audio/internal/command"
-	"github.com/cuthbeorht/go-audio/internal/errorHandling"
-	"github.com/cuthbeorht/go-audio/internal/media/files"
-	"github.com/cuthbeorht/go-audio/internal/media/id3"
+	"github.com/cuthbeorht/id3-tag-editor/internal/command"
+	"github.com/cuthbeorht/id3-tag-editor/internal/errorHandling"
+	"github.com/cuthbeorht/id3-tag-editor/internal/media/files"
+	"github.com/cuthbeorht/id3-tag-editor/internal/media/id3"
 )
 
 func main() {
