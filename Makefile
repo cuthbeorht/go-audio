@@ -25,3 +25,4 @@ clean:
 	@echo "Cleaning up after myself"
 	rm -rf ./tmp
 	rm -f sample.mp3
+	rm -rf target
