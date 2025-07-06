@@ -38,3 +38,7 @@ go.work.sum
 
 # Debug files???
 **/__debug_*
+
+# Terraform
+**/.Terraform
+*.hcl

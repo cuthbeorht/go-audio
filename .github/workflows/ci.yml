@@ -1,0 +1,13 @@
+name: CI # Workflow name
+on:
+    push:
+        branches: [ main ] # Triggered on pushes to the main branch
+    pull_request:
+        branches: [ main ] # Triggered on pull requests to the main branch
+jobs:
+    build:
+        runs-on: ubuntu-latest # Runner environment
+        steps:
+            - uses: actions/checkout@v4 # Checks out the repository
+            - name: Run a one-line script
+              run: echo Hello, world! # Example step
