@@ -23,6 +23,7 @@ profile.cov
 # Go workspace file
 go.work
 go.work.sum
+target/*
 
 # env file
 .env
@@ -34,6 +35,11 @@ go.work.sum
 # Make sure not to push any copyighted material
 # TODO: I will find some free mp3's to use for testing
 *.mp3
+**/tmp/*
 
 # Debug files???
 **/__debug_*
+
+# Terraform
+**/.Terraform
+*.hcl
