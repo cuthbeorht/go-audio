@@ -22,7 +22,7 @@ jobs:
                 make setup
             
             - name: Build
-              run: go build -v ./...
+              run: make build
 
             - name: Test
               run: make test
