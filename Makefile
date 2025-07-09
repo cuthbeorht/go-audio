@@ -7,7 +7,7 @@ run:
 	go run ./cmd/cli/main.go sample.mp3
 
 test:
-	go test -v ./...
+	gotestsum --format testdox
 
 setup:
 	@echo "Setup the project"
