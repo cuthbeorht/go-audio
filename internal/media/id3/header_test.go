@@ -47,7 +47,7 @@ func TestGivenValidMP3VersionExpect2_4(t *testing.T) {
 }
 
 func GetSample() []byte {
-	testFileData, err := os.ReadFile("../../../sample.mp3")
+	testFileData, err := os.ReadFile("../../../fixture-sample.dat")
 	if err != nil {
 		fmt.Println(os.Getwd())
 		msg := fmt.Sprintf("Unale to open sample mp3 file: %s", err)

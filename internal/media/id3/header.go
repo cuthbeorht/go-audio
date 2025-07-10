@@ -7,12 +7,33 @@ import (
 
 const maxSize = 268435455
 
+type Header struct {
+	Name    string
+	Version string
+	Flags   []byte
+	Size    int
+}
+
 func IsTagPresent(data []byte) bool {
 
 	id3 := string(data[0:3])
 
 	fmt.Printf("ID3 contents: %s", id3)
 	return id3 == "ID3"
+}
+
+func TagHeader(data []byte) (Header, error) {
+	var name string
+
+	if !IsTagPresent(data) {
+		return Header{}, errors.New("invalid tag")
+	}
+	name = "ID3"
+	size := Size(data)
+	version, _ := Version(data)
+
+	return Header{Name: name, Size: size, Version: version}, nil
+
 }
 
 func Size(data []byte) int {
