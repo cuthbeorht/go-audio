@@ -36,6 +36,7 @@ target/*
 # TODO: I will find some free mp3's to use for testing
 *.mp3
 **/tmp/*
+*.dat
 
 # Debug files???
 **/__debug_*

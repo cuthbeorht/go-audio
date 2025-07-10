@@ -27,19 +27,18 @@ func NewTag(data []byte, tagSize int) Tag {
 	var frames []Frame
 	var currentStartingByte int
 
-	startingByte := 10
-	currentStartingByte = startingByte
+	currentStartingByte = 0
 
 	for {
 
-		newFrame, err := NewFrame(data, currentStartingByte)
+		newFrame, err := NewFrame(data, currentStartingByte+10)
 
 		if err != nil {
 			break
 		}
 
 		frames = append(frames, newFrame)
-		currentStartingByte += newFrame.Size
+		currentStartingByte += newFrame.Size + 10
 	}
 
 	return Tag{Frames: frames}
@@ -104,6 +103,6 @@ func frameFlags(data []byte) FrameFlags {
 
 func frameData(data []byte, length int) string {
 	startingByte := 11                      // The full data from the MP3 Header where the frame data starts after the header, byte 11
-	endingByte := length + startingByte - 2 // The ending byte for the frame data is the starting byte with the length subtracting 2 bytes... Not sure why yet
+	endingByte := length + startingByte - 1 // The ending byte for the frame data is the starting byte with the length subtracting 2 bytes... Not sure why yet
 	return string(data[startingByte:endingByte])
 }
