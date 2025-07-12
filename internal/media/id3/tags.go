@@ -63,14 +63,16 @@ func NewFrame(data []byte, startingByte int) (Frame, error) {
 }
 
 func frameId(rawHeader []byte) (string, error) {
+	validPrefixes := []string{"T", "C"}
 
 	id := string(rawHeader[:4])
-
-	if !strings.HasPrefix(id, "T") {
-		return "", errors.New("not a valid frame id")
+	for _, prefix := range validPrefixes {
+		if !strings.HasPrefix(id, "T") {
+			return prefix, nil
+		}
 	}
 
-	return id, nil
+	return "", errors.New("not a valid frame id")
 }
 
 func frameSize(data []byte) int {

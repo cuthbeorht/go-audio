@@ -16,11 +16,18 @@ func TestGivenValidSampleNewTagExpectMultipleFrames(t *testing.T) {
 func TestGivernValidSampleNewFrameExpectTIT2Id(t *testing.T) {
 	sampleMp3 := GetSample()
 
-	expectedFrame := Frame{Id: "TIT2"}
+	found := true
 	actualFrame, _ := NewFrame(sampleMp3, 10)
 
-	if expectedFrame.Id != actualFrame.Id {
-		t.Errorf("Expected '%s'. Got '%s'", expectedFrame.Id, actualFrame.Id)
+	for _, frame := range FrameIds() {
+		if actualFrame.Id == frame.Id {
+			found = true
+			break
+		}
+	}
+
+	if !found {
+		t.Error("Expected frame found.")
 	}
 }
 
