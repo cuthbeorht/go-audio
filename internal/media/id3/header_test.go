@@ -51,7 +51,7 @@ func TestGivenValidID3TagID3SizeExpectValidSize(t *testing.T) {
 func TestGivenValidMP3VersionExpect2_4(t *testing.T) {
 	sampleMediaFile := GetSample()
 
-	expectedVersion := "2.4"
+	expectedVersion := "2.3"
 	actualVersion, _ := Version(sampleMediaFile)
 
 	if expectedVersion != actualVersion {

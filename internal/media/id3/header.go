@@ -41,7 +41,6 @@ func Size(data []byte) int {
 	byteSizes := []int{0, 0, 128}
 	size := 0
 	for index, value := range data[6:10] {
-		size = size << 8
 		if index < 3 {
 			size += int(value) * byteSizes[index]
 		} else {
