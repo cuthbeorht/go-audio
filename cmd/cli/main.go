@@ -19,14 +19,7 @@ func main() {
 	isId3Present := id3.IsTagPresent(mediaData)
 
 	if isId3Present {
-		id3Size := id3.Size(mediaData)
-		fmt.Printf("\n\nID3 tag size: %d\n", id3Size)
-
-		id3Version, err := id3.Version(mediaData)
-		errorHandling.Check(err, "Invalid verion")
-		fmt.Printf("\nVersion: %s", id3Version)
-
-		tagData := id3.Id3Tag(mediaData, id3Size)
-		fmt.Printf("\nTag data: %s", tagData)
+		newTag := id3.NewTag(mediaData)
+		fmt.Println("Frames: ", newTag.Frames)
 	}
 }

@@ -6,7 +6,7 @@ func TestGivenValidSampleNewTagExpectMultipleFrames(t *testing.T) {
 	sampleData := GetSample()
 	expectedFrames := 4
 
-	newTag := NewTag(sampleData, 128)
+	newTag := NewTag(sampleData)
 
 	if len(newTag.Frames) != expectedFrames {
 		t.Errorf("Expected '%d'. Got '%d", len(newTag.Frames), expectedFrames)

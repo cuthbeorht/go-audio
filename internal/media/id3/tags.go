@@ -22,7 +22,7 @@ type Tag struct {
 	Frames []Frame
 }
 
-func NewTag(data []byte, tagSize int) Tag {
+func NewTag(data []byte) Tag {
 
 	var frames []Frame
 	var currentStartingByte int

@@ -1,28 +1,41 @@
 package id3
 
 import (
-	"bytes"
 	"fmt"
 	"log"
 	"os"
 	"os/exec"
+	"path/filepath"
+	"strconv"
+	"strings"
 	"testing"
 )
 
 func getActualID3TagLength(path string) int {
-	var output bytes.Buffer
-	complexCmd := "ffmpeg -i sample.mp3 -v debug 2>&1 | grep id3v2 | awk '{print $4}' | awk -F ':' '{print $2}'"
-	cmd := exec.Command("bash", "-c", complexCmd)
-	cmd.Stdout = &output
 
-	err := cmd.Run()
-	if err != nil {
-		log.Fatalf("Unable to run command: %s", err)
+	ex, _ := os.Executable()
+	fmt.Println("CWDL ", filepath.Dir(ex))
+
+	cmd := exec.Command("/Users/davidsciacchettano/src/go-audio/scripts/audio-metadata.sh")
+	stdout, stderr := cmd.Output()
+
+	if stderr != nil {
+		fmt.Printf("Error getting length: %s", stderr)
+		panic("cannot get length")
 	}
+	num, _ := strconv.Atoi(strings.TrimSpace(string(stdout)))
+	fmt.Printf("Length: %d", num)
 
-	fmt.Printf("\nActual length: %s", output.String())
+	return num
+}
 
-	return 121
+func TestGivenValidMp3IsTagPresentExpectID3(t *testing.T) {
+	expectedTagPresent := true
+	actualTagPresent := IsTagPresent(GetSample())
+
+	if expectedTagPresent != actualTagPresent {
+		t.Errorf("Expected %t. Got %t", expectedTagPresent, actualTagPresent)
+	}
 }
 
 func TestGivenValidID3TagID3SizeExpectValidSize(t *testing.T) {
