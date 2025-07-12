@@ -67,8 +67,8 @@ func frameId(rawHeader []byte) (string, error) {
 
 	id := string(rawHeader[:4])
 	for _, prefix := range validPrefixes {
-		if !strings.HasPrefix(id, "T") {
-			return prefix, nil
+		if !strings.HasPrefix(id, prefix) {
+			return id, nil
 		}
 	}
 

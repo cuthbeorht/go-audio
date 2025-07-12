@@ -31,10 +31,10 @@ func TestGivernValidSampleNewFrameExpectTIT2Id(t *testing.T) {
 	}
 }
 
-func TestGivernValidSampleNewFrameExpectTIT2Size(t *testing.T) {
+func TestGivernValidSampleNewFrameExpectCOMMSize(t *testing.T) {
 	sampleMp3 := GetSample()
 
-	expectedFrame := Frame{Size: 28}
+	expectedFrame := Frame{Size: 22}
 	actualFrame, _ := NewFrame(sampleMp3, 10)
 
 	if expectedFrame.Size != actualFrame.Size {
